@@ -1,0 +1,4 @@
+class Teacher
+Alex
+alex
+END

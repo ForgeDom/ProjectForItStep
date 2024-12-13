@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="domain">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="libs">
+      <UniqueIdentifier>{321a9e8e-6118-49b3-9dd3-fe34221748d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{096994d8-5304-4298-8d43-3f7e139198aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\classes">
+      <UniqueIdentifier>{6ce84f5f-7bf7-4f9d-a26f-c6fd57664747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\classes\user">
+      <UniqueIdentifier>{03f9c349-8e2b-4469-bb4a-71d0306e2715}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\classes\student">
+      <UniqueIdentifier>{8bf3ccad-d2b8-4bb9-aa03-8054252088af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\classes\teacher">
+      <UniqueIdentifier>{c2a00d5c-cf16-4142-b8df-432524de4eff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\classes\admin">
+      <UniqueIdentifier>{e69624df-4ec9-4c05-a671-10dbb7b67415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\classes\courses">
+      <UniqueIdentifier>{fc542ec6-0137-474d-8c3c-8d4038a41f18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="domain\classes\menu">
+      <UniqueIdentifier>{6a4a56ac-6e32-40a4-98e1-6e4079e96f67}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="user.cpp">
+      <Filter>domain\classes\user</Filter>
+    </ClCompile>
+    <ClCompile Include="student.cpp">
+      <Filter>domain\classes\student</Filter>
+    </ClCompile>
+    <ClCompile Include="teacher.cpp">
+      <Filter>domain\classes\teacher</Filter>
+    </ClCompile>
+    <ClCompile Include="admin.cpp">
+      <Filter>domain\classes\admin</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="course.cpp">
+      <Filter>domain\classes\courses</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>domain\classes\menu</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="user.h">
+      <Filter>domain\classes\user</Filter>
+    </ClInclude>
+    <ClInclude Include="student.h">
+      <Filter>domain\classes\student</Filter>
+    </ClInclude>
+    <ClInclude Include="teacher.h">
+      <Filter>domain\classes\teacher</Filter>
+    </ClInclude>
+    <ClInclude Include="admin.h">
+      <Filter>domain\classes\admin</Filter>
+    </ClInclude>
+    <ClInclude Include="course.h">
+      <Filter>domain\classes\courses</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>domain\classes\menu</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
