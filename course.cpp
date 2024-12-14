@@ -1,9 +1,7 @@
-#include "Course.h"
-#include <iostream>
-#include <fstream>
+#include "libs.h"
 
-Course::Course(const std::string& courseName) : name(courseName) {}
-Course::Course(std::ifstream& inFile) {
+Course::Course(const string& name) : name(name) {}
+Course::Course(ifstream& inFile) {
     size_t nameSize;
     inFile >> nameSize;
     name.resize(nameSize);
@@ -14,35 +12,35 @@ Course::Course(std::ifstream& inFile) {
     inFile >> studentCount;
     inFile.ignore();
     for (size_t i = 0; i < studentCount; ++i) {
-        std::string studentName;
-        std::getline(inFile, studentName);
+        string studentName;
+        getline(inFile, studentName);
         students.push_back(studentName);
     }
 }
 
 
-const std::string& Course::getName() const {
+const string& Course::getName() const {
     return name;
 }
 
-const std::vector<std::string>& Course::getStudents() const {
+const vector<string>& Course::getStudents() const {
     return students;
 }
 
-void Course::addStudent(const std::string& studentName) {
+void Course::addStudent(const string& studentName) {
     students.push_back(studentName);
 }
 
-void Course::removeStudent(const std::string& studentName) {
-    auto it = std::find(students.begin(), students.end(), studentName);
+void Course::removeStudent(const string& studentName) {
+    auto it = find(students.begin(), students.end(), studentName);
     if (it != students.end()) {
         students.erase(it);
     }
 }
 
 void Course::displayStudents() const {
-    std::cout << "Students in course " << name << ":\n";
+    cout << "Students in course " << name << ":\n";
     for (const auto& student : students) {
-        std::cout << "- " << student << '\n';
+        cout << "- " << student << '\n';
     }
 }

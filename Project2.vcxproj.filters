@@ -75,5 +75,8 @@
     <ClInclude Include="menu.h">
       <Filter>domain\classes\menu</Filter>
     </ClInclude>
+    <ClInclude Include="libs.h">
+      <Filter>libs</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

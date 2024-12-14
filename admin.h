@@ -1,27 +1,25 @@
-#pragma once
-#include "User.h"
-#include "Teacher.h"
-#include "Student.h"
-#include "course.h"
-#include <fstream>
-#include <iostream>
+#ifndef ADMIN_H
+#define ADMIN_H
+#include "libs.h"
 
 class Admin : public User {
 public:
-    Admin(const std::string& username = "admin", const std::string& password = "admin");
+    Admin(const string& username = "admin", const string& password = "admin");
 
-    Admin(std::ifstream& inFile);
+    Admin(ifstream& inFile);
 
-    void saveToFile(std::ofstream& outFile) const;
+    vector<Course> courses;
+    void saveToFile(ofstream& outFile) const;
 
     void displayMenu() const override;
-    void viewStudents(const std::vector<User*>& users) const;
-    void viewTeachers(const std::vector<User*>& users) const;
-    void addTeacher(std::vector<User*>& users);
-    void deleteTeacher(std::vector<User*>& users);
-    void addStudent(std::vector<User*>& users);
-    void deleteStudent(std::vector<User*>& users);
-    void saveToFile(const std::string& filename, User* user) const;
-    void addCourse(std::vector<Course>& courses);
-    void deleteCourse(std::vector<Course>& courses);
+    void viewStudents(const string& fileName) const;
+    void viewTeachers(const string& fileName) const;
+    void addTeacher(vector<User*>& users);
+    void deleteTeacher(vector<User*>& users);
+    void addStudent(vector<User*>& users);
+    void deleteStudent(vector<User*>& users);
+    void saveToFile(const string& filename, User* user) const;
+    void addCourse(vector<Course>& courses);
+    void deleteCourse(vector<Course>& courses);
 };
+#endif // !ADMIN_H

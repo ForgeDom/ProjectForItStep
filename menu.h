@@ -1,14 +1,11 @@
-#pragma once
-#include "Admin.h"
-#include "Teacher.h"
-#include "Student.h"
-#include "Course.h"
-#include <vector>
+#ifndef MENU_H
+#define MENU_H
+#include "libs.h"
 
 class Menu {
 private:
-    std::vector<User*> users;
-    std::vector<Course> courses;
+    vector<User*> users;
+    vector<Course> courses;
 
     void saveUsersToFile() const;
     void loadUsersFromFile();
@@ -22,3 +19,5 @@ public:
     ~Menu();
     void displayMainMenu();
 };
+
+#endif // !MENU_H

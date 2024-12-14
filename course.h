@@ -1,18 +1,19 @@
-#pragma once
-#include <string>
-#include <vector>
+#ifndef COURSE_H
+#define COURSE_H
+#include "libs.h"
 
 class Course {
 private:
-    std::string name;
-    std::vector<std::string> students;
-
+    string name;
+    vector<string> students;
 public:
-    Course(const std::string& courseName);
-    Course(std::ifstream& inFile);
-    const std::string& getName() const;
-    const std::vector<std::string>& getStudents() const;
-    void addStudent(const std::string& studentName);
-    void removeStudent(const std::string& studentName);
+    Course(const string& name);
+    Course(ifstream& inFile);
+    const string& getName() const;
+    const vector<string>& getStudents() const;
+    void addStudent(const string& studentName);
+    void removeStudent(const string& studentName);
     void displayStudents() const;
 };
+
+#endif // !COURSE_H

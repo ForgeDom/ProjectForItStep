@@ -1,6 +1,4 @@
-#include "Menu.h"
-#include <fstream>
-#include <iostream>
+#include "libs.h"
 
 Menu::Menu() {
     loadUsersFromFile();
@@ -26,35 +24,35 @@ Menu::~Menu() {
 }
 
 void Menu::saveUsersToFile() const {
-    std::ofstream outFile("users.txt");
+    ofstream outFile("users.txt");
     if (!outFile) {
-        std::cerr << "Error saving users to file.\n";
+        cerr << "Error saving users to file.\n";
         return;
     }
 
     for (const auto* user : users) {
         if (user == nullptr) {
-            continue; // Skip if the pointer is null
+            continue; 
         }
         if (dynamic_cast<const Admin*>(user)) {
             continue;
         }
-        std::string type = typeid(*user).name();
+        string type = typeid(*user).name();
         outFile << type << '\n';
         user->saveToFile(outFile);
-        outFile << "END\n"; // Mark the end of a user's data for clarity
+        outFile << "END\n"; 
     }
 }
 
 void Menu::loadUsersFromFile() {
-    std::ifstream inFile("users.txt");
+    ifstream inFile("users.txt");
     if (!inFile) {
-        std::cerr << "Error: Unable to open users.txt for reading.\n";
+        cerr << "Error: Unable to open users.txt for reading.\n";
         return;
     }
 
-    std::string type;
-    while (std::getline(inFile, type)) {
+    string type;
+    while (getline(inFile, type)) {
          if (type == "Teacher") {
             users.push_back(new Teacher(inFile));
         }
@@ -62,34 +60,33 @@ void Menu::loadUsersFromFile() {
             users.push_back(new Student(inFile));
         }
         else {
-            std::cerr << "Unknown user type: " << type << "\n";
+            cerr << "Unknown user type: " << type << "\n";
             continue;
         }
 
-        std::string endMarker;
-        std::getline(inFile, endMarker);
+        string endMarker;
+        getline(inFile, endMarker);
         if (endMarker != "END") {
-            std::cerr << "Error: Missing END marker for user type " << type << "\n";
+            cerr << "Error: Missing END marker for user type " << type << "\n";
         }
     }
 
-    std::cout << "Loaded " << users.size() << " users from file.\n";
+    cout << "Loaded " << users.size() << " users from file.\n";
 }
 
-
 void Menu::registerStudent() {
-    std::string username, password;
-    std::cout << "Enter new Student Username: ";
-    std::cin >> username;
-    std::cout << "Enter Password: ";
-    std::cin >> password;
+    string username, password;
+    cout << "Enter new Student Username: ";
+    cin >> username;
+    cout << "Enter Password: ";
+    cin >> password;
 
     auto* newStudent = new Student(username, password);
     users.push_back(newStudent);
 
-    std::ofstream outFile("users.txt", std::ios::app);
+    ofstream outFile("users.txt", ios::app);
     if (!outFile) {
-        std::cerr << "Error saving student to file.\n";
+        cerr << "Error saving student to file.\n";
         return;
     }
 
@@ -98,31 +95,31 @@ void Menu::registerStudent() {
     outFile << password << '\n';
     outFile << "END\n";
 
-    std::cout << "Student registered successfully.\n";
+    cout << "Student registered successfully.\n";
 }
 
 
 
 void Menu::displayMainMenu() {
     while (true) {
-        std::cout << "Main Menu:\n";
-        std::cout << "1. Log in as Admin\n";
-        std::cout << "2. Log in as Teacher\n";
-        std::cout << "3. Log in as Student\n";
-        std::cout << "4. Register as Student\n";
-        std::cout << "5. Exit\n";
-        std::cout << "Choose an option: ";
+        cout << "Main Menu:\n";
+        cout << "1. Log in as Admin\n";
+        cout << "2. Log in as Teacher\n";
+        cout << "3. Log in as Student\n";
+        cout << "4. Register as Student\n";
+        cout << "5. Exit\n";
+        cout << "Choose an option: ";
 
         int choice;
-        std::cin >> choice;
+        cin >> choice;
 
         switch (choice) {
         case 1: {
-            std::string username, password;
-            std::cout << "Enter Admin Username: ";
-            std::cin >> username;
-            std::cout << "Enter Password: ";
-            std::cin >> password;
+            string username, password;
+            cout << "Enter Admin Username: ";
+            cin >> username;
+            cout << "Enter Password: ";
+            cin >> password;
 
             for (auto* user : users) {
                 if (auto* admin = dynamic_cast<Admin*>(user)) {
@@ -132,15 +129,15 @@ void Menu::displayMainMenu() {
                     }
                 }
             }
-            std::cout << "Invalid Admin credentials.\n";
+            cout << "Invalid Admin credentials.\n";
             break;
         }
         case 2: {
-            std::string username, password;
-            std::cout << "Enter Teacher Username: ";
-            std::cin >> username;
-            std::cout << "Enter Password: ";
-            std::cin >> password;
+            string username, password;
+            cout << "Enter Teacher Username: ";
+            cin >> username;
+            cout << "Enter Password: ";
+            cin >> password;
 
             for (auto* user : users) {
                 if (auto* teacher = dynamic_cast<Teacher*>(user)) {
@@ -150,15 +147,15 @@ void Menu::displayMainMenu() {
                     }
                 }
             }
-            std::cout << "Invalid Teacher credentials.\n";
+            cout << "Invalid Teacher credentials.\n";
             break;
         }
         case 3: {
-            std::string username, password;
-            std::cout << "Enter Student Username: ";
-            std::cin >> username;
-            std::cout << "Enter Password: ";
-            std::cin >> password;
+            string username, password;
+            cout << "Enter Student Username: ";
+            cin >> username;
+            cout << "Enter Password: ";
+            cin >> password;
 
             for (auto* user : users) {
                 if (auto* student = dynamic_cast<Student*>(user)) {
@@ -168,7 +165,7 @@ void Menu::displayMainMenu() {
                     }
                 }
             }
-            std::cout << "Invalid Student credentials.\n";
+            cout << "Invalid Student credentials.\n";
             break;
         }
         case 4:
@@ -177,7 +174,7 @@ void Menu::displayMainMenu() {
         case 5:
             return;
         default:
-            std::cout << "Invalid choice.\n";
+            cout << "Invalid choice.\n";
         }
     }
 }
@@ -186,14 +183,14 @@ void Menu::adminMenu(Admin* admin) {
     int choice;
     do {
         admin->displayMenu();
-        std::cin >> choice;
+        cin >> choice;
 
         switch (choice) {
         case 1:
-            admin->viewStudents(users);
+            admin->viewStudents("users.txt");
             break;
         case 2:
-            admin->viewTeachers(users);
+            admin->viewTeachers("users.txt");
             break;
         case 3:
             admin->addTeacher(users);
@@ -215,8 +212,41 @@ void Menu::adminMenu(Admin* admin) {
             break;
         case 0:
             displayMainMenu();
-            std::cout << "Returning to main menu...\n";
-            return;  // Повертає до головного меню
+            cout << "Returning to main menu...\n";
+            return;  
+        default:
+            cout << "Invalid choice. Please try again.\n";
+        }
+    } while (true);
+}
+
+void Menu::teacherMenu(Teacher* teacher) {
+    int choice;
+    std::string fileName = "courses.txt";
+
+    do {
+        teacher->displayMenu();
+        std::cin >> choice;
+
+        switch (choice) {
+        case 1:
+            teacher->viewCourses(fileName); // Відображення курсів з файлу
+            break;
+        case 2:
+            teacher->viewStudentsInCourse(fileName); // Перегляд студентів у конкретному курсі
+            break;
+        case 3:
+            teacher->addStudentToCourse(fileName); // Додавання студента до курсу
+            break;
+        case 4:
+            teacher->removeStudentFromCourse(fileName); // Видалення студента з курсу
+            break;
+        case 5:
+            teacher->assignGradeToStudent(fileName); // Призначення оцінки студенту (ще не реалізовано)
+            break;
+        case 0:
+            std::cout << "Returning to the main menu...\n";
+            return; // Вихід з меню викладача
         default:
             std::cout << "Invalid choice. Please try again.\n";
         }
@@ -224,35 +254,6 @@ void Menu::adminMenu(Admin* admin) {
 }
 
 
-
-void Menu::teacherMenu(Teacher* teacher) {
-    int choice;
-    do {
-        teacher->displayMenu();
-        std::cin >> choice;
-
-        switch (choice) {
-        case 1:
-            teacher->viewCourses(courses);
-            break;
-        case 2:
-            teacher->viewStudentsInCourse(courses);
-            break;
-        case 3:
-            teacher->addStudentToCourse(courses);
-            break;
-        case 4:
-            teacher->removeStudentFromCourse(courses);
-            break;
-        case 5:
-            teacher->assignGradeToStudent();
-            break;
-        default:
-            std::cout << "Invalid choice.\n";
-        }
-    } while (choice != 0);
-}
-
 void Menu::studentMenu(Student* student) {
-    std::cout << "Student menu coming soon.\n";
+    cout << "Student menu coming soon.\n";
 }
