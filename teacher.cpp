@@ -34,7 +34,7 @@ void Teacher::viewCourses(const string& fileName) const {
     string courseName;
     cout << "Courses:\n";
     while (getline(inFile, courseName)) {
-        if (courseName == "END") break; // Закінчення списку курсів
+        if (courseName == "END") break;
         cout << "- " << courseName << '\n';
     }
 }
@@ -60,7 +60,6 @@ void Teacher::viewStudentsInCourse(const string& fileName) const {
             return;
         }
         else {
-            // Пропускаємо студентів курсу
             while (getline(inFile, studentName) && studentName != "END");
         }
     }
@@ -96,7 +95,7 @@ void Teacher::addStudentToCourse(const string& fileName) {
             while (getline(inFile, student) && student != "END") {
                 tempFile << student << '\n';
             }
-            tempFile << studentName << '\n'; // Додаємо нового студента
+            tempFile << studentName << '\n'; 
             tempFile << "END\n";
         }
         else {

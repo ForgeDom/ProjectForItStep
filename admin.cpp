@@ -41,11 +41,11 @@ void Admin::viewStudents(const string& fileName) const {
 
     while (getline(inFile, type)) {
         if (type == "Student") {
-            getline(inFile, username);  // Читаємо ім'я користувача
+            getline(inFile, username); 
             cout << "- " << username << '\n';
             found = true;
         }
-        // Пропускаємо інші дані користувача
+
         string skipLine;
         while (getline(inFile, skipLine) && skipLine != "END") {}
     }
@@ -71,11 +71,10 @@ void Admin::viewTeachers(const string& fileName) const {
 
     while (getline(inFile, type)) {
         if (type == "Teacher") {
-            getline(inFile, username);  // Читаємо ім'я користувача
+            getline(inFile, username); 
             cout << "- " << username << '\n';
             found = true;
         }
-        // Пропускаємо інші дані користувача
         string skipLine;
         while (getline(inFile, skipLine) && skipLine != "END") {}
     }

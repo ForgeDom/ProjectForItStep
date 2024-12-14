@@ -222,33 +222,33 @@ void Menu::adminMenu(Admin* admin) {
 
 void Menu::teacherMenu(Teacher* teacher) {
     int choice;
-    std::string fileName = "courses.txt";
+    string fileName = "courses.txt";
 
     do {
         teacher->displayMenu();
-        std::cin >> choice;
+        cin >> choice;
 
         switch (choice) {
         case 1:
-            teacher->viewCourses(fileName); // Відображення курсів з файлу
+            teacher->viewCourses(fileName);
             break;
         case 2:
-            teacher->viewStudentsInCourse(fileName); // Перегляд студентів у конкретному курсі
+            teacher->viewStudentsInCourse(fileName); 
             break;
         case 3:
-            teacher->addStudentToCourse(fileName); // Додавання студента до курсу
+            teacher->addStudentToCourse(fileName); 
             break;
         case 4:
-            teacher->removeStudentFromCourse(fileName); // Видалення студента з курсу
+            teacher->removeStudentFromCourse(fileName);
             break;
         case 5:
-            teacher->assignGradeToStudent(fileName); // Призначення оцінки студенту (ще не реалізовано)
+            teacher->assignGradeToStudent(fileName);
             break;
         case 0:
-            std::cout << "Returning to the main menu...\n";
-            return; // Вихід з меню викладача
+            cout << "Returning to the main menu...\n";
+            return; 
         default:
-            std::cout << "Invalid choice. Please try again.\n";
+            cout << "Invalid choice. Please try again.\n";
         }
     } while (true);
 }

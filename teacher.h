@@ -9,10 +9,10 @@ public:
     void displayMenu() const override;
 
     void saveToFile(ofstream& outFile) const;
-    void viewCourses(const std::string& fileName) const;
-    void viewStudentsInCourse(const std::string& fileName) const;
-    void addStudentToCourse(const std::string& fileName);
-    void removeStudentFromCourse(const std::string& fileName);
-    void assignGradeToStudent(const std::string& fileName);
+    void viewCourses(const string& fileName) const;
+    void viewStudentsInCourse(const string& fileName) const;
+    void addStudentToCourse(const string& fileName);
+    void removeStudentFromCourse(const string& fileName);
+    void assignGradeToStudent(const string& fileName);
 };
 #endif // !TEACHER_H
